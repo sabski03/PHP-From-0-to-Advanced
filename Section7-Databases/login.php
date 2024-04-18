@@ -6,18 +6,14 @@
 </head>
 <body>
 <?php
+include "db.php";
 
 if(isset($_POST['submit'])){
 
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $connection = mysqli_connect('localhost', 'root', '','loginapp');
-    if($connection){
-        echo "we are connected";
-    }else{
-        die("Database connection failed");
-    }
+
 
 }
 
