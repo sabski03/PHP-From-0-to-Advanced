@@ -19,13 +19,21 @@ if(isset($_POST['submit'])){
         die("Database connection failed");
     }
 
+    $query = "INSERT INTO users(username,password) VALUES('$username','$password')";
+
+    $result = mysqli_query($connection, $query);
+
+    if(!$result){
+        die("Query FAILED" . mysqli_error());
+    }
+
 }
 
 ?>
 
 <div class="container">
     <div class="col-sm-3">
-        <form action="login.php" method="POST">
+        <form action="login_create.php" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" class="form-control">
@@ -34,7 +42,7 @@ if(isset($_POST['submit'])){
                 <label for="password">Password</label>
                 <input type="password" name="password" class="form-control">
             </div>
-                <input class="btn btn-primary mt-2" type="submit" name="submit" value="Submit">
+            <input class="btn btn-primary mt-2" type="submit" name="submit" value="Submit">
         </form>
     </div>
 </div>
