@@ -1,22 +1,17 @@
 <?php
 include "db.php";
 include "login_functions.php";
+include "includes/header.php";
 
-if(isset($_POST['submit'])){
     UpdateTable();
-}
+
 ?>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Documents</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-</head>
-<body>
+
 
 
 <div class="container">
     <div class="col-sm-6">
+        <h1 class="text-center">Update</h1>
         <form action="login_update.php" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -36,7 +31,4 @@ if(isset($_POST['submit'])){
             <input class="btn btn-primary mt-2" type="submit" name="submit" value="UPDATE">
         </form>
     </div>
-</div>
-
-</body>
-</html>
+<?php include "includes/footer.php";

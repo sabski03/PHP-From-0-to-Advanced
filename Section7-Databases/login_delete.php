@@ -1,22 +1,15 @@
 <?php
 include "db.php";
 include "login_functions.php";
-
-if(isset($_POST['submit'])){
+include "includes/header.php";
     DeleteRows();
-}
+
 ?>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Documents</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-</head>
-<body>
 
 
 <div class="container">
     <div class="col-sm-6">
+        <h1 class="text-center">Delete</h1>
         <form action="login_delete.php" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -36,7 +29,4 @@ if(isset($_POST['submit'])){
             <input class="btn btn-primary mt-2" type="submit" name="submit" value="DELETE">
         </form>
     </div>
-</div>
-
-</body>
-</html>
+<?php include "includes/footer.php";

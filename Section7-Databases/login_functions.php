@@ -18,7 +18,8 @@ function showAllData(){
 
 
 function UpdateTable(){
-    global $connection;
+    if(isset($_POST['submit'])) {
+        global $connection;
         $username = $_POST['username'];
         $password = $_POST['password'];
         $id = $_POST['id'];
@@ -27,26 +28,60 @@ function UpdateTable(){
 
         $result = mysqli_query($connection, $query);
 
-        if($result){
+        if ($result) {
             echo "User Updated";
-        }else{
+        } else {
             echo "Error updating user: " . mysqli_error($connection);
         }
+    }
 }
 
 function DeleteRows(){
+    if(isset($_POST['submit'])) {
+        global $connection;
+        $id = $_POST['id'];
+
+        $query = "DELETE FROM users WHERE id = $id";
+
+        $result = mysqli_query($connection, $query);
+
+        if ($result) {
+            echo "User Deleted";
+        } else {
+            echo "Error updating user: " . mysqli_error($connection);
+        }
+    }
+}
+
+
+function CreateUser(){
     global $connection;
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $id = $_POST['id'];
 
-    $query = "DELETE FROM users WHERE id = $id";
+
+    $query = "INSERT INTO users(username,password) VALUES('$username','$password')";
 
     $result = mysqli_query($connection, $query);
 
-    if($result){
-        echo "User Deleted";
+    if(!$result){
+        die("Query FAILED" . mysqli_error());
     }else{
-        echo "Error updating user: " . mysqli_error($connection);
+        echo "User Created";
+    }
+}
+
+function ReadRows(){
+global $connection;
+    $query = "SELECT * FROM users";
+
+    $result = mysqli_query($connection, $query);
+
+    if(!$result){
+        die("Query FAILED" . mysqli_error());
+    }
+
+    while($row = mysqli_fetch_assoc($result)) {
+        print_r($row);
     }
 }

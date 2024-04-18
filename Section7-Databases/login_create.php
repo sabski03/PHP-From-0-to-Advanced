@@ -1,28 +1,10 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Documents</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-</head>
-<body>
 <?php
 include "db.php";
-
+include "login_functions.php";
+include "includes/header.php";
 if(isset($_POST['submit'])){
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-
-    $query = "INSERT INTO users(username,password) VALUES('$username','$password')";
-
-    $result = mysqli_query($connection, $query);
-
-    if(!$result){
-        die("Query FAILED" . mysqli_error());
-    }else{
-        echo "User Created";
-    }
+    CreateUser();
 
 }
 
@@ -30,6 +12,7 @@ if(isset($_POST['submit'])){
 
 <div class="container">
     <div class="col-sm-3">
+        <h1 class="text-center">Create User</h1>
         <form action="login_create.php" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -39,10 +22,9 @@ if(isset($_POST['submit'])){
                 <label for="password">Password</label>
                 <input type="password" name="password" class="form-control">
             </div>
-            <input class="btn btn-primary mt-2" type="submit" name="submit" value="Submit">
+            <input class="btn btn-primary mt-2" type="submit" name="submit" value="CREATE">
         </form>
     </div>
-</div>
 
-</body>
-</html>
+
+    <?php include "includes/footer.php";
